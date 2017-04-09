@@ -5,7 +5,7 @@ import { Ingredient } from 'app/recipes/ingredient';
 @Injectable()
 export class RecipeService {
 
-  recipes: Recipe[] = [
+  private recipes: Recipe[] = [
     new Recipe('Italian Breaded Pork',
       'My father\'s side of the family is Sicilian, and has been making these pork chops ',
       'http://images.media-allrecipes.com/userphotos/560x315/257811.jpg',
@@ -28,6 +28,14 @@ export class RecipeService {
 
   getRecipes(): Recipe[] {
     return this.recipes;
+  }
+
+  getRecipe(id): Recipe {
+    return this.recipes[id];
+  }
+
+  delete(recipe: Recipe){
+    this.recipes.splice(this.recipes.indexOf(recipe), 1);
   }
 
 }
